@@ -1,14 +1,15 @@
 <template>
-  <el-scrollbar :always="false">
+  <el-scrollbar>
     <el-menu
       :collapse="hasCollapse"
       :collapse-transition="true"
       :unique-opened="true"
       :router="true"
       :default-active="$route.path"
-      background-color="#545c64"
+      :background-color="asideBgColor"
       text-color="#fff"
     >
+      <h3 v-show="!hasCollapse" class="system-title">管理系统</h3>
       <el-menu-item index="2">
         <el-icon><HomeFilled /></el-icon>
         <template #title>首页</template>
@@ -67,19 +68,31 @@
   </el-scrollbar>
 </template>
 <script lang='ts' setup>
+  import { ref } from 'vue';
+
   defineProps({
     hasCollapse: Boolean
   })
+  const asideBgColor = ref<string>('#545c64');
 </script>
 <style lang='scss' scoped>
-  .el-menu {
-    height: 100vh;
-    overflow: auto;
-    :deep(.el-sub-menu__title) {
-      padding-right: 0;
+  .el-scrollbar {
+    height: 100%;
+    background-color: v-bind(asideBgColor);
+    .el-menu {
+      height: 100%;
+      border-right: none;
+      .system-title {
+        padding: 0px;
+        font-size: 18px;
+        margin: 6px;
+        text-align: center;
+        color: #fff;
+        transition: none;
+      }
     }
-  }
-  .el-menu:not(.el-menu--collapse) {
-    width: 220px;
+    .el-menu:not(.el-menu--collapse) {
+      width: 220px;
+    }
   }
 </style>
