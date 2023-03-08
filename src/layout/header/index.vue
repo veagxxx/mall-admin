@@ -1,17 +1,19 @@
 <template>
   <div class="header">
-    <div class="header-left">
-      <div class="header-left__fold" @click="onCollapse">
-        <el-icon><Fold /></el-icon>
+    <div class="header-tool">
+      <div class="header-tool__fold" @click="onCollapse">
+        <el-icon>
+          <component :is="hasCollapse ? 'Expand' : 'Fold'"></component>
+        </el-icon>
       </div>
     </div>
-    <div class="header-right">
-      <div class="header-right__item">
+    <div class="header-tool">
+      <div class="header-tool__item">
         <el-tooltip place="bottom-start" content="消息通知">
           <el-icon><bell-filled /></el-icon>
         </el-tooltip>
       </div>
-      <div class="header-right__item">
+      <div class="header-tool__item">
         <el-dropdown>
           <span class="el-dropdown-link">
             <el-avatar
@@ -31,8 +33,11 @@
 </template>
 <script lang='ts' setup>
   import { SwitchButton, UserFilled } from "@element-plus/icons-vue";
-  import { useStore } from '@/store/index';
-  const store = useStore();
+  import { useSettingStore } from '@/store/index';
+  defineProps({
+    hasCollapse: Boolean
+  })
+  const store = useSettingStore();
   const onCollapse = () => {
     store.updateCollapse()
   }
@@ -47,15 +52,15 @@
     .el-icon {
       font-size: 1.2em;
     }
-    .header-left, .header-right {
+    .header-tool, .header-tool {
       height: 100%;
       display: flex;
       align-items: center;
     }
-    .header-left__fold {
+    .header-tool__fold {
       cursor: pointer;
     }
-    .header-right__item {
+    .header-tool__item {
       height: 100%;
       display: flex;
       align-items: center;

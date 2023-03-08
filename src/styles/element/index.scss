@@ -9,3 +9,6 @@
 );
 $color-purple: #626aef;
 $color-hotpink: hotpink;
+.el-menu-item:hover {
+  background-color: rgba($color: $color-purple, $alpha: 0.2);
+}

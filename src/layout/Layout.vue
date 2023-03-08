@@ -1,8 +1,10 @@
 <template>
   <el-container class="container">
-    <Aside :hasCollapse="hasCollapse"></Aside>
+    <Aside :hasCollapse="hasCollapse" :menusList="menusList"></Aside>
     <el-container class="right-container">
-      <el-header><Header></Header></el-header>
+      <el-header>
+        <Header :hasCollapse="hasCollapse"></Header>
+      </el-header>
       <el-main>
         <el-scrollbar>
           <router-view></router-view>
@@ -15,9 +17,10 @@
 <script lang='ts' setup>
   import Header from './header/index.vue';
   import Aside from './aside/index.vue';
-  import { useStore } from '@/store/index';
+  import { useSettingStore } from '@/store/index';
   import { computed } from 'vue';
-  const store = useStore();
+  import { menusList } from './menus'
+  const store = useSettingStore();
   const hasCollapse = computed(() => {
     return store.hasCollapse;
   })
@@ -33,8 +36,9 @@
   .right-container {
     height: 100%;
     .el-main {
-      padding: 10px;
+      padding: 0px;
       overflow: auto;
+      background: #eee;
     }
   }
 }
