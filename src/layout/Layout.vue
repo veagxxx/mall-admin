@@ -1,6 +1,6 @@
 <template>
   <el-container class="container">
-    <Aside :hasCollapse="hasCollapse" :menusList="menusList"></Aside>
+    <Aside :hasCollapse="hasCollapse" :menusList="routerList"></Aside>
     <el-container class="right-container">
       <el-header>
         <Header :hasCollapse="hasCollapse"></Header>
@@ -19,7 +19,7 @@
   import Aside from './aside/index.vue';
   import { useSettingStore } from '@/store/index';
   import { computed } from 'vue';
-  import { menusList } from './menus'
+  import { routerList } from '@/mock/routerData'
   const store = useSettingStore();
   const hasCollapse = computed(() => {
     return store.hasCollapse;

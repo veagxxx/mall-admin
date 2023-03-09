@@ -1,18 +1,18 @@
 <template>
   <el-menu-item v-if="!menuItem.children" :index="menuItem.path">
     <el-icon>
-      <component :is="menuItem.icon"></component>
+      <component :is="menuItem.meta.icon"></component>
     </el-icon>
     <template #title>
-      <span>{{ menuItem?.title }}</span>
+      <span>{{ menuItem.meta.title }}</span>
     </template>
   </el-menu-item>
   <el-sub-menu v-else :index="menuItem.path">
     <template #title>
       <el-icon>
-        <component :is="menuItem.icon"></component>
+        <component :is="menuItem.meta.icon"></component>
       </el-icon>
-      <span>{{ menuItem?.title }}</span>
+      <span>{{ menuItem.meta.title }}</span>
     </template>
     <el-menu-item-group 
       v-for="(item, index) in menuItem.children" 

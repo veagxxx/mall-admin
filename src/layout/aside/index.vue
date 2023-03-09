@@ -21,12 +21,12 @@
 <script lang='ts' setup>
   import { ref, computed } from 'vue';
   import MenuTree from './MenuTree.vue';
-  import { Menu } from '../menus';
+  import { Route } from '@/typings/route';
   import { useRoute } from 'vue-router';
   const route = useRoute()
   interface Props {
     hasCollapse: boolean;
-    menusList: Menu[];
+    menusList: Route[];
   }
   withDefaults(defineProps<Props>(), {
     hasCollapse: false,

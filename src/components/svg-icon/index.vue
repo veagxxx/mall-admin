@@ -1,10 +1,10 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true" >
+  <svg :class="svgClass" aria-hidden="true" v-bind="attrs.onClick">
     <use :xlink:href="iconName" />
   </svg>
 </template>
 <script lang='ts' setup>
-  import { computed } from 'vue';
+  import { computed, useAttrs } from 'vue';
   const props = defineProps({
     iconClass: {
       type: String,
@@ -15,6 +15,7 @@
       default: ''
     }
   })
+  const attrs = useAttrs()
   const svgClass = computed<string>(() => {
     if (props.className) {
       return 'svg-icon ' + props.className

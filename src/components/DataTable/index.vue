@@ -1,5 +1,12 @@
 <template>
-  <el-table :data="tableData">
+  <el-table 
+    :data="tableData" 
+    :height="height" 
+    :maxHeight="maxHeight"
+    :border="border"
+    :stripe="stripe"
+    :size="size"
+  >
     <ColumnTree 
       v-for="item in columns" 
       :key="item.prop" 
@@ -13,6 +20,11 @@
   interface Props {
     columns: Column[];
     tableData: any[];
+    height?: number | string;
+    maxHeight?: number | string;
+    border?: boolean;
+    stripe?: boolean;
+    size?: 'default' | 'small' | 'large';
   }
   withDefaults(defineProps<Props>(), {})
 </script>
