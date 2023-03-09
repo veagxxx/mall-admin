@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-rout
 import commonRoutes from './common'
 import { routerList } from '@/mock/routerData';
 import { ElMessage } from 'element-plus';
+const modules = import.meta.glob('../pages/**/**.vue')
 const Layout = () => import('@/layout/Layout.vue')
 const Home = () => import('@/pages/home/index.vue')
 // 路由白名单
@@ -35,7 +36,7 @@ const mergeRoutes = (routerList: any) => {
       router.addRoute('Home', {
         path: item.path,
         name: item.name,
-        component: () => import(`../${item.component}`),
+        component: modules[/* @vite-ignore */ `../${item.component}`],
         meta: item.meta,
       })
     }

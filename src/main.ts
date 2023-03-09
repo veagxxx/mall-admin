@@ -12,7 +12,10 @@ import 'virtual:svg-icons-register';
 import SvgIcon from '@/components/svg-icon/index.vue';
 // pinia
 import { createPinia } from 'pinia'
+// 自定义指令
+import vFocus from './common/directives'
 const app = createApp(App)
+app.directive('focus', vFocus)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }

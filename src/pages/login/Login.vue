@@ -13,6 +13,7 @@
       >
         <el-form-item label="" prop="username">
           <el-input 
+            v-focus
             v-model="loginData.username" 
             autocomplete="off"
             placeholder="输入你的账号"
