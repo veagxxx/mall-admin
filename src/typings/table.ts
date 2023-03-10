@@ -1,3 +1,5 @@
+import { VNode } from "vue";
+
 export interface Column {
   type?: string;
   prop?: string;
@@ -8,7 +10,7 @@ export interface Column {
   index?: number | ((index: number) => number);
   children?: Column[];
   list?: ButtonList[];
-  render?: Render; 
+  render?: Render | (() => VNode); 
   formatter?: (row: Column, col: number, cellValue: any, index: number) => {};
 }
 interface ButtonList {
