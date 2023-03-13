@@ -1,4 +1,4 @@
 import axios from '@/utils/axios';
-export const testApi = () => {
-  return axios.get('/user');
+export const testApi = (params: any) => {
+  return axios.post('/users', params);
 }

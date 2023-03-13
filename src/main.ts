@@ -14,6 +14,11 @@ import SvgIcon from '@/components/svg-icon/index.vue';
 import { createPinia } from 'pinia'
 // 自定义指令
 import directive from './common/directives'
+// mockjs
+import { useMock } from '@/mock/index';
+if (process.env.NODE_ENV === 'development') {
+  useMock();
+}
 const app = createApp(App)
 directive(app);
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {

@@ -1,6 +1,6 @@
 import { VNode } from "vue";
 
-export interface Column {
+export interface TbColumn<T> {
   type?: string;
   prop?: string;
   label: string;
@@ -8,20 +8,7 @@ export interface Column {
   width?: string | number;
   fixed?: boolean | 'left' | 'right';
   index?: number | ((index: number) => number);
-  children?: Column[];
-  list?: ButtonList[];
-  render?: Render | (() => VNode); 
-  formatter?: (row: Column, col: number, cellValue: any, index: number) => {};
-}
-interface ButtonList {
-  text?: string;
-  size?: 'default' | 'small' | 'mini';
-  type?: Type;
-  link?: boolean;
-  cb?: (row: Column) => void;
-}
-type Type = 'default' | 'primary' | 'danger' | 'warning' | 'info';
-
-interface Render {
-  type: Type;
+  children?: TbColumn<T>[];
+  render?: ((value: T) => VNode); 
+  formatter?: (row: TbColumn<T>, col: number, cellValue: any, index: number) => {};
 }

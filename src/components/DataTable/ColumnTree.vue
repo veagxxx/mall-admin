@@ -9,20 +9,8 @@
     :index="column.index"
     :formatter="column.formatter"
   >
-    <template #default="scope" v-if="column.list">
-      <el-button 
-        v-for="btn in column.list" 
-        :type="btn.type"
-        :size="btn.size"
-        @click="btn.cb && btn.cb(scope.row)"
-      >
-        {{ btn.text }}
-      </el-button>
-    </template>
-    <template #default="scope" v-else-if="column.render">
-      <el-tag :type="column.render.type"> 
-        {{ scope.row[column.prop] }}
-      </el-tag>
+    <template #default="scope" v-if="column.render">
+      <component :is="column.render && column.render(scope.row)"></component>
     </template>
     <template v-if="column.children">
       <ColumnTree 
@@ -33,9 +21,9 @@
   </el-table-column>
 </template>
 <script lang='ts' setup>
-  import { Column } from '@/typings/table';
+  import { TbColumn } from '@/typings/table';
   interface Props {
-    column: Column;
+    column: TbColumn<any>;
   }
   withDefaults(defineProps<Props>(), {})
 </script>

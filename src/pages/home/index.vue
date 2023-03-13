@@ -1,37 +1,51 @@
 <template>
   <div class="home-page">
-    <el-table-V2
-      :data="tableData"
-      :columns="columns"
-      :width="width - 24"
-      :height="height - 68"
-      fixed
-    ></el-table-V2>
-    <div class="pagination">
-      <el-pagination 
-        v-model:current-page="currentPage"
-        v-model:page-size="pageSize"
-        :page-sizes="[10, 20, 50, 100]"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="1000"
-        @size-change="onSizeChange"
-        @current-change="onCurrentChange" 
-      />
-    </div>
+    <DataTable
+      :height="height - 64"
+      :columns="tableData.columns"
+      :tableData="tableData.data"
+      :loading="loading"
+      pagination
+      :currentPage="currentPage"
+      :pageSize="pageSize"
+      :pageSizes="[10, 20, 50, 100]"
+      :total="100"
+      @sizeChange="onSizeChange"
+      @currentChange="onCurrentChange"
+    />
   </div>
 </template>
 <script lang='ts' setup>
   import { useWidthHeight } from '@/common/hooks/index';
-  import { onMounted, ref } from 'vue';
-  import { columns, tableData } from '@/mock/table';
-  const { width, height } = useWidthHeight();
+  import { onMounted, reactive, ref } from 'vue';
+  import { columns } from '@/mock/table';
+  import { testApi } from '@/api/test';
+  import DataTable from '@/components/DataTable/index.vue';
+  onMounted(() => {
+    getData()
+  })
+  const { height } = useWidthHeight();
+  const loading = ref<boolean>(false);
   const currentPage = ref<number>(1);
   const pageSize = ref<number>(20);
+  const tableData = reactive<any>({
+    data: [],
+    columns: columns,
+  })
+  const getData = async () => {
+    loading.value = true;
+    const res = await testApi({
+      pageIndex: currentPage.value,
+      pageSize: pageSize.value,
+    });
+    tableData.data = res.data;
+    loading.value = false;
+  }
   const onSizeChange = (value: number) => {
-    console.log('onSizeChange', value)
+    pageSize.value = value
   }
   const onCurrentChange = (value: number) => {
-    console.log('onCurrentChange', value)
+    currentPage.value = value
   }
 </script>
 <style lang='scss' scoped>
@@ -40,8 +54,5 @@
     margin: 6px;
     padding: 6px;
     background: #fff;
-    .pagination {
-      padding: 6px;
-    }
   }
 </style>
