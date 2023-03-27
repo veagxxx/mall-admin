@@ -50,7 +50,8 @@
     height: 100%;
     padding: 0 16px;
     .el-icon {
-      font-size: 1.2em;
+      vertical-align: middle;
+      font-size: 18px;
     }
     .header-tool, .header-tool {
       height: 100%;

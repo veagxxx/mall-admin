@@ -5,7 +5,7 @@
       :columns="tableData.columns"
       :tableData="tableData.data"
       :loading="loading"
-      pagination
+      :pagination="true"
       :currentPage="currentPage"
       :pageSize="pageSize"
       :pageSizes="[10, 20, 50, 100]"
@@ -16,7 +16,7 @@
   </div>
 </template>
 <script lang='ts' setup>
-  import { useWidthHeight } from '@/common/hooks/index';
+  import { useWidthHeight, useLoading } from '@/hooks/index';
   import { onMounted, reactive, ref } from 'vue';
   import { columns } from '@/mock/table';
   import { testApi } from '@/api/test';
@@ -25,7 +25,7 @@
     getData()
   })
   const { height } = useWidthHeight();
-  const loading = ref<boolean>(false);
+  const { loading, setLoading } = useLoading();
   const currentPage = ref<number>(1);
   const pageSize = ref<number>(20);
   const tableData = reactive<any>({
@@ -33,13 +33,13 @@
     columns: columns,
   })
   const getData = async () => {
-    loading.value = true;
+    setLoading(true);
     const res = await testApi({
       pageIndex: currentPage.value,
       pageSize: pageSize.value,
     });
     tableData.data = res.data;
-    loading.value = false;
+    setLoading(false);
   }
   const onSizeChange = (value: number) => {
     pageSize.value = value

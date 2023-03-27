@@ -14,7 +14,7 @@
         v-for="item in menusList" 
         :key="item.id" 
         :menuItem="item"
-      ></MenuTree>
+      />
     </el-menu>
   </el-scrollbar>
 </template>

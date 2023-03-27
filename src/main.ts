@@ -13,7 +13,7 @@ import SvgIcon from '@/components/svg-icon/index.vue';
 // pinia
 import { createPinia } from 'pinia'
 // 自定义指令
-import directive from './common/directives'
+import directive from './directives'
 // mockjs
 import { useMock } from '@/mock/index';
 if (process.env.NODE_ENV === 'development') {
