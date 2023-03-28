@@ -54,7 +54,7 @@
       }
     }
     .el-menu:not(.el-menu--collapse) {
-      width: 220px;
+      width: $asideWidth;
     }
   }
 </style>

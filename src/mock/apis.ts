@@ -9,7 +9,7 @@ const apis: MockParams[] = [{
       code: 200,
       message: '操作成功',
       totalCount: 100,
-      "data|50": [{
+      "data|10": [{
         "id|+1": 1,
         "name": "@name",
         "title": "",
