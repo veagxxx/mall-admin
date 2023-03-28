@@ -35,6 +35,20 @@ export const routerList: Route[] = [
       icon: 'Memo',
       hasAuthority: true,
     },
+    children: [
+      {
+        id: 33,
+        name: 'ZZZZ',
+        path: '/zzzz',
+        component: 'pages/home/index.vue',
+        role: 'admin',
+        meta: {
+          title: '我的订单',
+          icon: 'Memo',
+          hasAuthority: true,
+        },
+      },
+    ]
   },
   {
     id: 4,

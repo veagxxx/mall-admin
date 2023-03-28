@@ -6,6 +6,9 @@
           <component :is="hasCollapse ? 'Expand' : 'Fold'"></component>
         </el-icon>
       </div>
+      <div class="header-tool__title">
+        {{ routeMeta.title }}
+      </div>
     </div>
     <div class="header-tool">
       <div class="header-tool__item">
@@ -34,13 +37,19 @@
 <script lang='ts' setup>
   import { SwitchButton, UserFilled } from "@element-plus/icons-vue";
   import { useSettingStore } from '@/store/index';
+  import { useRoute } from "vue-router";
+  import { computed } from "vue";
   defineProps({
     hasCollapse: Boolean
   })
+  const route = useRoute()
   const store = useSettingStore();
   const onCollapse = () => {
     store.updateCollapse()
   }
+  console.log(route)
+  const routeMeta = computed(() => route.meta)
+
 </script>
 <style lang='scss' scoped>
   .header {
@@ -60,6 +69,12 @@
     }
     .header-tool__fold {
       cursor: pointer;
+    }
+    .header-tool__title {
+      font-size: 14px;
+      color: #666;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-left: 4px;
     }
     .header-tool__item {
       height: 100%;

@@ -6,7 +6,18 @@
       'base': $colorPurple,
     ),
   ),
+  $menu: (
+    'item-height': 40px,
+    'sub-item-height': 40px,
+  )
 );
-.el-menu-item:hover {
-  background-color: rgba($color: $colorPurple, $alpha: 0.2);
+.el-menu-item {
+  border-radius: 8px;
+  margin: 4px 0px;
+  &:hover {
+    background-color: rgba($color: $colorPurple, $alpha: 0.2);
+  }
+}
+.el-menu-item-group__title {
+  padding: 0;
 }

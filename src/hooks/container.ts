@@ -10,10 +10,10 @@ export const useWidthHeight = () => {
   // 高度：window.innerHeight - header 高度
   const mainHeight = ref<number>(window.innerHeight - 60);
   // 宽度：window.innnerWidth - aside 宽度
-  const mainWidth = ref<number>(window.innerWidth - (hasCollapse.value ? 60 : 220));
+  const mainWidth = ref<number>(window.innerWidth - (hasCollapse.value ? 60 : 200));
   const updateWidthHeight = () => {
     mainHeight.value = window.innerHeight - 60;
-    mainWidth.value = window.innerWidth - (hasCollapse.value ? 60 : 220);
+    mainWidth.value = window.innerWidth - (hasCollapse.value ? 60 : 200);
   }
   // 挂载/销毁事件
   useEventListener(window, 'resize', updateWidthHeight);

@@ -1,15 +1,17 @@
 <template>
   <el-scrollbar>
+    <div class="mall-logo">
+      <svg-icon class="logo-icon" icon-class="logo" size="large"></svg-icon>
+    </div>
     <el-menu
       :collapse="hasCollapse"
       :collapse-transition="true"
-      :unique-opened="true"
+      :unique-opened="false"
       :router="true"
       :default-active="activePath"
       :background-color="asideBgColor"
       :active-text-color="asideTextColor"
     >
-      <!-- <h3 v-show="!hasCollapse" class="system-title">管理系统</h3> -->
       <MenuTree 
         v-for="item in menusList" 
         :key="item.id" 
@@ -42,16 +44,18 @@
     height: 100%;
     background-color: v-bind(asideBgColor);
     border-right: 1px solid #eee;
+    .mall-logo {
+      height: $headerHeight;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .logo-icon {
+        font-size: 36px;
+      }
+    }
     .el-menu {
       height: 100%;
       border-right: none;
-      .system-title {
-        padding: 0px;
-        font-size: 18px;
-        margin: 6px;
-        text-align: center;
-        color: v-bind(asideTextColor);
-      }
     }
     .el-menu:not(.el-menu--collapse) {
       width: $asideWidth;

@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Home',
     component: Layout,
     children: [
-      { path: '/index', name: 'index', component: Home },
+      // { path: '/index', name: 'index', component: Home },
     ]
   }
 ]
