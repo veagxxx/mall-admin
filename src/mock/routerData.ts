@@ -62,4 +62,16 @@ export const routerList: Route[] = [
       hasAuthority: true,
     },
   },
+  {
+    id: 5,
+    name: 'Setting',
+    path: '/setting',
+    component: 'pages/setting/index.vue',
+    role: 'admin',
+    meta: {
+      title: '系统设置',
+      icon: 'Tools',
+      hasAuthority: true,
+    },
+  },
 ]
