@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ColumnTree: typeof import('./src/components/DataTable/ColumnTree.vue')['default']
     DataTable: typeof import('./src/components/DataTable/index.vue')['default']
+    Echarts: typeof import('./src/components/echarts/index.vue')['default']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']

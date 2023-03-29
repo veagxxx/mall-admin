@@ -47,9 +47,7 @@
   const onCollapse = () => {
     store.updateCollapse()
   }
-  console.log(route)
   const routeMeta = computed(() => route.meta)
-
 </script>
 <style lang='scss' scoped>
   .header {

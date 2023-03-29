@@ -50,9 +50,6 @@
 </script>
 <style lang='scss' scoped>
   .home-page {
-    height: 100%;
-    margin: 6px;
-    padding: 6px;
-    background: #fff;
+    @include main-box;
   }
 </style>

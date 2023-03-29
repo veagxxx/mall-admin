@@ -6,13 +6,13 @@
         <Header :hasCollapse="hasCollapse"></Header>
       </el-header>
       <el-main>
-        <el-scrollbar>
+        <!-- <el-scrollbar> -->
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
               <component :is="Component" :key="route.path"/>
             </transition>
           </router-view>
-        </el-scrollbar>
+        <!-- </el-scrollbar> -->
       </el-main> 
     </el-container>
   </el-container>
@@ -35,14 +35,15 @@
   .el-header {
     padding: 0;
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
-    background-color: #fff;
+    background-color: $headerBgColor;
   }
   .right-container {
     height: 100%;
     .el-main {
       padding: 0px;
       overflow: auto;
-      background: #eee;
+      overflow-x: hidden;
+      background: $mainBgColor;
     }
   }
 }
