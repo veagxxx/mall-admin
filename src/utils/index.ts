@@ -27,7 +27,13 @@ export const groupByKey = (arr: Array<any>, key: string) => {
   }, {})
 }
 
-
+/**
+ * 查找数组最后一项
+ * @param arr 查找数组
+ * @param callback 查找条件回调
+ * @param thisArg this指向
+ * @returns 
+ */
 export function findLastIndex (
   arr: Array<any>, 
   callback: (value?: any, index?: number, array?: Array<any>) => boolean,
@@ -39,4 +45,8 @@ export function findLastIndex (
     }
   }
   return -1
+}
+
+const getValue = <T, K extends keyof T>(obj: T, key: K): T[K] => {
+  return obj[key];
 }

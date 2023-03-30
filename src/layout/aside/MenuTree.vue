@@ -1,7 +1,8 @@
 <template>
   <el-menu-item v-if="!menuItem.children" :index="menuItem.path">
     <el-icon>
-      <component :is="menuItem.meta.icon"></component>
+      <svg-icon :iconClass="menuItem.meta.icon"></svg-icon>
+      <!-- <component :is="menuItem.meta.icon"></component> -->
     </el-icon>
     <template #title>
       <span>{{ menuItem.meta.title }}</span>
@@ -10,7 +11,8 @@
   <el-sub-menu v-else :index="menuItem.path">
     <template #title>
       <el-icon>
-        <component :is="menuItem.meta.icon"></component>
+        <svg-icon :iconClass="menuItem.meta.icon"></svg-icon>
+        <!-- <component :is="menuItem.meta.icon"></component> -->
       </el-icon>
       <span>{{ menuItem.meta.title }}</span>
     </template>

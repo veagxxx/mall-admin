@@ -1,18 +1,18 @@
 <template>
   <el-container class="container">
     <Aside :hasCollapse="hasCollapse" :menusList="routerList"></Aside>
-    <el-container class="right-container">
+    <el-container class="main-container">
       <el-header>
         <Header :hasCollapse="hasCollapse"></Header>
       </el-header>
       <el-main>
-        <!-- <el-scrollbar> -->
+        <el-scrollbar>
           <router-view v-slot="{ Component, route }">
             <transition name="fade" mode="out-in">
               <component :is="Component" :key="route.path"/>
             </transition>
           </router-view>
-        <!-- </el-scrollbar> -->
+        </el-scrollbar>
       </el-main> 
     </el-container>
   </el-container>
@@ -37,7 +37,7 @@
     box-shadow: 0 1px 4px rgba(0,21,41,.08);
     background-color: $headerBgColor;
   }
-  .right-container {
+  .main-container {
     height: 100%;
     .el-main {
       padding: 0px;

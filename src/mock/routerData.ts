@@ -8,7 +8,7 @@ export const routerList: Route[] = [
     role: '',
     meta: {
       title: '首页',
-      icon: 'HomeFilled',
+      icon: 'home',
       hasAuthority: false,
     }
   },
@@ -20,7 +20,7 @@ export const routerList: Route[] = [
     role: 'admin',
     meta: {
       title: '商品管理',
-      icon: 'ShoppingCart',
+      icon: 'commodity',
       hasAuthority: true,
     },
   },
@@ -32,7 +32,7 @@ export const routerList: Route[] = [
     role: 'admin',
     meta: {
       title: '订单管理',
-      icon: 'Memo',
+      icon: 'order',
       hasAuthority: true,
     },
     children: [
@@ -44,7 +44,7 @@ export const routerList: Route[] = [
         role: 'admin',
         meta: {
           title: '我的订单',
-          icon: 'Memo',
+          icon: 'order',
           hasAuthority: true,
         },
       },
@@ -58,7 +58,7 @@ export const routerList: Route[] = [
     role: 'admin',
     meta: {
       title: '会员管理',
-      icon: 'Avatar',
+      icon: 'member',
       hasAuthority: true,
     },
   },
@@ -70,8 +70,20 @@ export const routerList: Route[] = [
     role: 'admin',
     meta: {
       title: '系统设置',
-      icon: 'Tools',
+      icon: 'setting',
       hasAuthority: true,
+    },
+  },
+  {
+    id: 5,
+    name: 'Game',
+    path: '/game',
+    component: 'pages/setting/index.vue',
+    role: 'admin',
+    meta: {
+      title: '游戏',
+      icon: 'game',
+      hasAuthority: false,
     },
   },
 ]
