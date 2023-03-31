@@ -12,6 +12,9 @@
     </div>
     <div class="header-tool">
       <div class="header-tool__item">
+        <SearchInput v-model="searchValue"/>
+      </div>
+      <div class="header-tool__item">
         <el-tooltip place="bottom-start" content="消息通知">
           <el-icon><bell-filled /></el-icon>
         </el-tooltip>
@@ -38,7 +41,8 @@
   import { SwitchButton, UserFilled } from "@element-plus/icons-vue";
   import { useSettingStore } from '@/store/index';
   import { useRoute } from "vue-router";
-  import { computed } from "vue";
+  import { computed, ref } from "vue";
+  import SearchInput from "../component/SearchInput.vue";
   defineProps({
     hasCollapse: Boolean
   })
@@ -48,6 +52,7 @@
     store.updateCollapse()
   }
   const routeMeta = computed(() => route.meta)
+  const searchValue = ref<string>('')
 </script>
 <style lang='scss' scoped>
   .header {

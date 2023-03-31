@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import errorCode from './errorCode';
+import axios, { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import errorCode, { ErrorCode } from './errorCode';
 import { ElMessage, ElMessageBox, ElNotification } from 'element-plus';
 
 // 是否显示重新登录
@@ -13,10 +13,10 @@ const service: AxiosInstance = axios.create({
 
 // 请求拦截
 service.interceptors.request.use(
-  (config: any) => {
+  (config: InternalAxiosRequestConfig<any>) => {
     return config
   },
-  (error: any) => {
+  (error: Error) => {
     return Promise.reject(error)
   }
 )
@@ -25,9 +25,9 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (res: AxiosResponse) => {
     const code: number = Number(res.data.code || 200)
-    console.log('响应拦截', res)
+    // console.log('响应拦截', res)
     // 获取错误信息
-    const msg: string = (errorCode as any)[code] || res.data.msg || errorCode['default']
+    const msg: string = errorCode[code] || res.data.msg || errorCode[ErrorCode.DEFAULT]
     // 二进制数据则直接返回
     if(res.request.responseType ===  'blob' || res.request.responseType ===  'arraybuffer'){
       return res.data
@@ -39,16 +39,15 @@ service.interceptors.response.use(
           confirmButtonText: '重新登录',
           cancelButtonText: '取消',
           type: 'warning'
-        }
-      ).then(() => {
-        isRelogin.show = false;
-        // store.dispatch('LogOut').then(() => {
-        //   location.href = '/index';
-        // })
-      }).catch(() => {
-        isRelogin.show = false;
-      });
-    }
+        }).then(() => {
+          isRelogin.show = false;
+          // store.dispatch('LogOut').then(() => {
+          //   location.href = '/index';
+          // })
+        }).catch(() => {
+          isRelogin.show = false;
+        });
+      }
       return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
     } else if (code === 500) {
       ElMessage({
@@ -65,7 +64,7 @@ service.interceptors.response.use(
       return res.data
     }
   }, 
-  (error: any) => {
+  (error: Error) => {
     return Promise.reject(error)
   }
 )
