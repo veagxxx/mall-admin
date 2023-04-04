@@ -23,7 +23,7 @@
     numberAnimationRef.value?.play();
   }
   const onFinish = () => {
-    console.log('onFinish')
+    // console.log('onFinish')
   }
 </script>
 <style lang='scss' scoped>
