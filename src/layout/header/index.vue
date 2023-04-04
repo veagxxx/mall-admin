@@ -12,7 +12,7 @@
     </div>
     <div class="header-tool">
       <div class="header-tool__item">
-        <SearchInput v-model="searchValue"/>
+        <SearchInput v-model="searchValue" size="small"/>
       </div>
       <div class="header-tool__item">
         <el-tooltip place="bottom-start" content="消息通知">

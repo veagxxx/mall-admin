@@ -78,7 +78,7 @@ export const routerList: Route[] = [
     id: 5,
     name: 'Game',
     path: '/game',
-    component: 'pages/setting/index.vue',
+    component: 'pages/game/index.vue',
     role: 'admin',
     meta: {
       title: '游戏',
